@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./assets/logox.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        body {
+            background-color: #161616;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 100px;
+            margin: 0;
+        }
+
+        .pg {
+            font-size: 140px;
+            width: 100%;
+            background: linear-gradient(45deg, red, blue);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: erx .6s infinite;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 24px;
+        }
+
+        a {
+            text-decoration: none;
+            background: linear-gradient(45deg, red, blue);
+            font-size: 24px;
+            border-radius: 8px;
+            padding: 10px 15px;
+            color: #fff;
+        }
+
+        @keyframes erx {
+            0% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(5deg);
+            }
+            50% {
+                transform: rotate(0deg);
+            }
+            75% {
+                transform: rotate(-5deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        @media (max-width: 768px) {
+            .pg {
+            font-size: 90px;
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pg">Oops!</div>
+    <h1>404 - Page Not Found</h1>
+    <p>Oops! The page you're looking for doesn't exist.</p>
+    <p><a href="/">Go to Home</a></p>
+</body>
+
+</html>

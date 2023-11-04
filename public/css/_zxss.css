@@ -1,0 +1,211 @@
+.song-list{
+    background-color: #000000f1; color: #fff; padding: 20px; 
+    margin-top: 0; height: 100%; overflow-y: visible; overflow-x: hidden;
+}
+.songname{background-color: #000000f3;
+    width: auto ;   
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    border-radius:  50px 0px 0px  50px; 
+    border-bottom: 1px solid #cccccc5e;
+    margin: 2px 0px;
+    padding:0;
+    text-align: center;
+    display: flex;
+    text-decoration: none;
+    font-size: 20px;
+    z-index: 1;
+    display: block; }
+    #myUL {
+        padding: 0;
+    }
+    #myUL li{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        z-index: 1;
+        cursor: pointer;
+    }
+    .songname:hover{background-color: rgba(19, 19, 19, 0.411);z-index: 1;box-shadow: 2px 3px 10px  #ffffff70;}
+    .songname img{
+        float: left;
+        width:55px;
+        height: 55px;
+        clip: auto;
+        clip-rule: evenodd;
+        image-resolution: 75px;
+        padding: 0;
+        margin: 0;
+        left: 0;
+        border-radius: 55px;
+    }
+    .impxz{position: relative; width: 75px;}
+    .songname i{
+        background: linear-gradient(45deg, rgba(255, 0, 0, 0.856), rgba(0, 0, 255, 0.856));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 25px;
+         position: absolute; line-height: 55px; left:50%; transform: translateX(-100%);}
+    .songname span{
+        display: inline-flex;
+        width:auto;
+        overflow: hidden;
+        padding: 0px 0px 0px 15px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .zxnn{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    ._zxn{
+        flex: 3;
+        width: auto;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    ._zxan {
+        flex: 2;
+        color: #bdbdbd;
+      }
+      
+      
+    ._zxst{
+        width: 10%;
+        justify-content: center;
+        flex: 1;
+        text-align: center;
+    }
+    .zxinp{
+        width: 30%;
+        height: 30px;
+        outline: none;
+        color: #fff;
+        background:rgba(0,0,0,.5);
+        border:none;
+        border-bottom: 1px solid #ccc;
+        box-sizing:border-box;
+        padding: 0 10px;
+        font-size: 14px;
+    }
+    .nevm h2{
+        flex: 1;
+    }
+    #myInput {
+        background-color: transparent;
+        width: 91%;   
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 50px;
+        padding-left:12px;
+        border: none;
+        margin-bottom: 12px;
+      }
+      .nevm{
+        display: flex;
+      }
+
+      .zx-bar {
+        background-color: transparent;
+        border-bottom: 1px solid #fffffff3;
+        margin-bottom: 5px;
+        color: #fff; /* Text color */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    
+    .column {
+        flex: 1;
+        text-align: center;
+    }
+    
+    .name-column {
+        flex: 3; /* Adjust the width of the Name column as needed */
+        padding-left: 75px;
+        text-align: start;
+    }
+    
+    .artist-column {
+        flex: 2; /* Adjust the width of the Artist column as needed */
+    }
+    
+    .clock-column {
+        flex: 1; /* Adjust the width of the Clock column as needed */
+        text-align: center;
+    }
+    .LIST-58{
+        padding-bottom: 10px;
+      }
+      .LIST-58::after{
+        content:'© 2023 ssify. All rights reserved.';
+        font-size: 12px;
+        text-align: center;
+        color:#6c6d6f;
+        
+      }
+    
+    @media (max-width: 768px) { 
+        .song-list{
+        height: 85%;
+        margin-top:0px;
+        overflow-y: visible;
+      }
+      .songname span{
+        width: auto;
+        font-size: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .LIST-58{
+        padding-bottom: 15px;
+      }
+      #myInput {
+    width: 16px;
+    transition: width 0.2s ease-in-out;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#myInput:hover {
+    width: 150px;
+}
+
+.zxinp {
+    width: 1;
+    line-height: 40px;
+    background: none;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    margin-right: 0px;
+    overflow:hidden;
+    white-space: nowrap;
+}
+
+.zxinp:hover {
+    width: 320px;
+    background: none;
+    border: none;
+    transition: all 0.3s ease-out;
+}
+
+      ._zxan{
+        overflow: hidden;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+      }
+  }
+  
