@@ -12,12 +12,15 @@ SSIFY is a web-based music platform designed to simplify your music experience. 
 
 ## Getting Started
 
-To use SSIFY, simply visit our website [insert-website-link-here] and create an account. There's no need for installation or downloads – SSIFY is accessible directly from your web browser.
+To use SSIFY, simply visit our website [insert-website-link-here](https://ssify.netlify.app/) and create an account. There's no need for installation or downloads – SSIFY is accessible directly from your web browser.
 
+## Contributing
+
+We welcome contributions from the open-source community to enhance SSIFY further. If you're interested in contributing to our project, please follow our [Contribution Guidelines](CONTRIBUTING.md) for detailed instructions on how to get started.
 
 ## Support
 
-For any questions, issues, or feedback, please [create a new issue](https://github.com/ssify/ssify/issues) on our GitHub repository. Our team is here to assist you and improve your SSIFY experience.
+For any questions, issues, or feedback, please [create a new issue](https://github.com/your-ssify-repo/issues) on our GitHub repository. Our team is here to assist you and improve your SSIFY experience.
 
 ## License
 
