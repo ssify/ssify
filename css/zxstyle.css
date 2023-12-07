@@ -27,7 +27,29 @@
   line-height: 100%;
   text-align: center;
   font-size: 35px;
+  transition: all .5s ease-in-out;
 }
-.zx-playlist:before {
+.zx-albums .path1:before {
   content: "\e900";
+  color: #ffffffcb;
+}
+.zx-albums .path2:before {
+  content: "\e901";
+  color: #ffffff77;
+  margin-left: -1em;
+}
+.zx-albums .path3:before {
+  content: "\e902";
+  color: #d4d4d4;
+  margin-left: -1em;
+}
+.zx-albums .path4:before {
+  content: "\e903";
+  color: #303030;
+  margin-left: -1em;
+}
+.zx-albums .path5:before {
+  content: "\e904";
+  color: #ffffffc4;
+  margin-left: -1em;
 }

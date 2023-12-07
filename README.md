@@ -20,4 +20,4 @@ For any questions, issues, or feedback, please [create a new issue](https://gith
 
 ## License
 
-SSIFY is licensed under the [insert-license-type-here] License. See the [LICENSE](LICENSE) file for more details.
+SSIFY is licensed under the License. See the [LICENSE](LICENSE) file for more details.
