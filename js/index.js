@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const sn = this.getAttribute('zx-dsn');
             const dsan = this.getAttribute('zx-dsan');
             const dspu = this.getAttribute('zx-dspu');
+            const dslyr = this.getAttribute('zx-lyr');
 
-            const songData = `${ds}|${sn}|${dsan}|${dspu}`;
+            const songData = `${ds}|${sn}|${dsan}|${dspu}|${dslyr}`;
 
             // Set a cookie with the song data
             document.cookie = `songData=${encodeURIComponent(songData)}`;
