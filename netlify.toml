@@ -21,8 +21,8 @@ force = true
 status = 301
 
 [[redirects]]
-from = "/s/_zxpl_.css"
-to = "/css/_zxpl_.css"
+from = "/s/zxpl.css"
+to = "/css/zxpl.css"
 status = 302
 
 [[redirects]]
