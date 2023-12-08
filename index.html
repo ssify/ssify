@@ -38,7 +38,7 @@
         </div>
         
     <ul id="myUL">
-        <li><a class="songname" zx-ds="https://shorturl.at/ju046" zx-lyr="" zx-dsn="Island" zx-dsan="Jarico" zx-dspu="https://shorturl.at/dlpN5"><div class="impxz"><i class="arrow fa fa-play playbtn0" ></i><img src="https://shorturl.at/dlpN5" alt=""></div><div class="zxnn"><span class="_zxn">Island</span><span class="_zxan">Jarico</span><span class="_zxst">3:36</span></div></a></li>
+        <li><a class="songname" zx-ds="test/Heat-Waves.mp3" zx-lyr="https://ssify.netlify.app/test/file.lyr" zx-dsn="Island" zx-dsan="Jarico" zx-dspu="https://shorturl.at/dlpN5"><div class="impxz"><i class="arrow fa fa-play playbtn0" ></i><img src="https://shorturl.at/dlpN5" alt=""></div><div class="zxnn"><span class="_zxn">Island</span><span class="_zxan">Jarico</span><span class="_zxst">3:36</span></div></a></li>
         <li><a class="songname" zx-ds="https://shorturl.at/dlvVZ" zx-lyr="" zx-dsn="Suzume no Tojimari" zx-dsan="Radwimps, Kazuma Jinnouchi" zx-dspu="https://shorturl.at/iklTW"><div class="impxz"><i class="arrow fa fa-play playbtn0"></i><img src="https://shorturl.at/iklTW"></div><div class="zxnn"><span class="_zxn">Suzume no Tojimari</span><span class="_zxan">Radwimps, Kazuma Jinnouchi</span><span class="_zxst">4:30</span></div></a></li>
         <li><a class="songname" zx-ds="https://shorturl.at/yzE08" zx-lyr="" zx-dsn='Kalaastar (From "Honey 3.0")' zx-dsan="Yo Yo Honey Singh" zx-dspu="https://shorturl.at/dfDJ3"><div class="impxz"><i class="arrow fa fa-play playbtn0"></i><img src="https://shorturl.at/dfDJ3"></div><div class="zxnn"><span class="_zxn">Kalaastar (From "Honey 3.0")</span><span class="_zxan">Yo Yo Honey Singh</span><span class="_zxst">3.27</span></div></a></li>
         <li><a class="songname" zx-ds="https://shorturl.at/hHMY5" zx-lyr="" zx-dsn="Tu Hai Kahan" zx-dsan="AUR" zx-dspu="https://shorturl.at/dgjG2"><div class="impxz"><i class="arrow fa fa-play playbtn0"></i><img src="https://shorturl.at/dgjG2"></div><div class="zxnn"><span class="_zxn">Tu Hai Kahan</span><span class="_zxan">AUR</span><span class="_zxst">4:23</span></div></a></li>
@@ -105,11 +105,7 @@
   </div>
   
   <div id="snackbar">Song downloaded. Please check your download folder.</div>
-  <div class="popup" id="lyricsPopup">
-    <h2>Song Lyrics</h2>
-    <div id="zxlyrics"></div>
-    <button onclick="closePopup()">Close</button>
-</div>
+  <div id="lyrics"></div>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Read the song data from the cookie
@@ -125,14 +121,14 @@
         }
 
         if (songData) {
-            const [ds, sn, dsan, dspu] = songData.split('|');
+            const [ds, sn, dsan, dspu,dslyr] = songData.split('|');
 
             document.getElementById('songName').textContent = sn;
             document.getElementById('artistName').textContent = dsan;
             document.getElementById('songProfileImageUrl').src = dspu;
 
             const audio = document.getElementById('myaudio');
-            const lyrics = document.getElementById('zxlyrics');
+            const lyricsDiv = document.getElementById('lyrics');
 
             function updateAudioSource(ds) {
                 audio.src = `${ds}`;
@@ -144,9 +140,59 @@
             }
 
             updateAudioSource(ds);
-        } else {
+
+            function updateLyricsSource(dslyr) {
+            fetchLyrics(dslyr)
+                .then(parsedLyrics => {
+                    // Update lyrics on audio time update
+                    audio.addEventListener('timeupdate', function () {
+                        const currentTime = audio.currentTime;
+                        const currentLyric = parsedLyrics.find(lyric => timeToSeconds(lyric.time) > currentTime);
+
+                        if (currentLyric) {
+                            // Display lyrics with current time bold
+                            lyricsDiv.innerHTML = parsedLyrics.map(lyric => {
+                                const timeInSeconds = timeToSeconds(lyric.time);
+                                const isBold = timeInSeconds <= currentTime && timeInSeconds + 3 > currentTime;
+                                return `<span class="${isBold ? 'bold' : ''}">${lyric.text}</span><br>`;
+                            }).join('');
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error(`Error fetching or parsing lyrics: ${error}`);
+                });
         }
-    });
+
+        updateLyricsSource(dslyr);
+    } else {
+        // Handle the case when no song data is available
+    }
+});
+
+function fetchLyrics(lyricsFile) {
+        return fetch(lyricsFile)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch lyrics: ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(lyrics => {
+                // Parse the lyrics into an array of objects
+                const parsedLyrics = lyrics.split('\n').map(line => {
+                    const match = line.match(/^\[(\d+:\d+)\]\s*(.*)/);
+                    return match ? { time: match[1], text: match[2] } : null;
+                }).filter(Boolean);
+
+                return parsedLyrics;
+            });
+    }
+
+function timeToSeconds(time) {
+    const [minutes, seconds] = time.split(':').map(Number);
+    return minutes * 60 + seconds;
+}
 
     function downloadFunction() {
         const snackbar = document.getElementById('snackbar');
