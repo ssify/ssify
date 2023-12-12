@@ -370,5 +370,30 @@
     .download:hover {
         color: rgb(85, 116, 255);
     }
-
+    .lyricss{
+      display: none;
+      position: absolute;
+      z-index: 900;
+      background: linear-gradient(45deg, red, blue);
+      width: 100%;
+      height: 87%;
+      top: 0;
+      margin-top: auto;
+      margin-bottom: auto;
+      text-align: justify;
+      overflow: hidden;
+      overflow-y: scroll;
+      font-size:18px ;
+    }
+    #lyrics{
+      height: 100%;
+      width: 80%;
+      margin: 10px auto;
+    }
+    .boldz{
+      font-size:20px;
+      background: linear-gradient(45deg, #0783f0, #73ff00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 }
