@@ -55,7 +55,16 @@ $('button').on('click', function() {
   }
   
   if (self.hasClass('shuffle') || self.hasClass('repeat')) {
-    self.toggleClass('active');
+  self.toggleClass('active');
+  }
+  if (self.hasClass('lyricsbtn')) {
+  self.toggleClass('active');
+    // Show lyrics box if button is active
+    if (self.hasClass('active')) {
+      $('.lyricss').css('display', 'block');
+    } else {
+      $('.lyricss').css('display', 'none');
+    }
   }
 }).on('mousedown', function() {
   var self = $(this);

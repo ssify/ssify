@@ -38,8 +38,8 @@
         </div>
         
     <ul id="myUL">
-        <li><a class="songname" zx-ds="https://shorturl.at/ju046" zx-lyr="lyr/file.lyr" zx-dsn="Island" zx-dsan="Jarico" zx-dspu="https://shorturl.at/dlpN5"><div class="impxz"><i class="arrow fa fa-play playbtn0" ></i><img src="https://shorturl.at/dlpN5" alt=""></div><div class="zxnn"><span class="_zxn">Island</span><span class="_zxan">Jarico</span><span class="_zxst">3:36</span></div></a></li>
-        <li><a class="songname" zx-ds="https://shorturl.at/dlvVZ" zx-lyr="" zx-dsn="Suzume no Tojimari" zx-dsan="Radwimps, Kazuma Jinnouchi" zx-dspu="https://shorturl.at/iklTW"><div class="impxz"><i class="arrow fa fa-play playbtn0"></i><img src="https://shorturl.at/iklTW"></div><div class="zxnn"><span class="_zxn">Suzume no Tojimari</span><span class="_zxan">Radwimps, Kazuma Jinnouchi</span><span class="_zxst">4:30</span></div></a></li>
+        <li><a class="songname" zx-ds="https://shorturl.at/ju046" zx-lyr="" zx-dsn="Island" zx-dsan="Jarico" zx-dspu="https://shorturl.at/dlpN5"><div class="impxz"><i class="arrow fa fa-play playbtn0" ></i><img src="https://shorturl.at/dlpN5" alt=""></div><div class="zxnn"><span class="_zxn">Island</span><span class="_zxan">Jarico</span><span class="_zxst">3:36</span></div></a></li>
+        <li><a class="songname" zx-ds="https://shorturl.at/dlvVZ" zx-lyr="lyr/Suzume_no_Tojimari.lyr" zx-dsn="Suzume no Tojimari" zx-dsan="Radwimps, Kazuma Jinnouchi" zx-dspu="https://shorturl.at/iklTW"><div class="impxz"><i class="arrow fa fa-play playbtn0"></i><img src="https://shorturl.at/iklTW"></div><div class="zxnn"><span class="_zxn">Suzume no Tojimari</span><span class="_zxan">Radwimps, Kazuma Jinnouchi</span><span class="_zxst">4:30</span></div></a></li>
         <li><a class="songname" zx-ds="https://shorturl.at/yzE08" zx-lyr="" zx-dsn='Kalaastar (From "Honey 3.0")' zx-dsan="Yo Yo Honey Singh" zx-dspu="https://shorturl.at/dfDJ3"><div class="impxz"><i class="arrow fa fa-play playbtn0"></i><img src="https://shorturl.at/dfDJ3"></div><div class="zxnn"><span class="_zxn">Kalaastar (From "Honey 3.0")</span><span class="_zxan">Yo Yo Honey Singh</span><span class="_zxst">3.27</span></div></a></li>
         <li><a class="songname" zx-ds="https://shorturl.at/hHMY5" zx-lyr="" zx-dsn="Tu Hai Kahan" zx-dsan="AUR" zx-dspu="https://shorturl.at/dgjG2"><div class="impxz"><i class="arrow fa fa-play playbtn0"></i><img src="https://shorturl.at/dgjG2"></div><div class="zxnn"><span class="_zxn">Tu Hai Kahan</span><span class="_zxan">AUR</span><span class="_zxst">4:23</span></div></a></li>
         <li><a class="songname" zx-ds="https://shorturl.at/bgyRU" zx-lyr="" zx-dsn="Chaleya" zx-dsan="Anirudh Ravichander, Arijit Singh, Shilpa Rao, Kumaar" zx-dspu="https://shorturl.at/hwFGQ"><div class="impxz"><i class="arrow fa fa-play playbtn0"></i><img src="https://shorturl.at/hwFGQ"></div><div class="zxnn"><span class="_zxn">Chaleya</span><span class="_zxan">Anirudh Ravichander, Arijit Singh, Shilpa Rao, Kumaar</span><span class="_zxst">3:20</span></div></a></li>
@@ -54,7 +54,10 @@
         <li><a class="songname" zx-ds="https://shorturl.at/ABS48" zx-lyr="" zx-dsn="Maan Meri Jaan" zx-dsan="King" zx-dspu="https://shorturl.at/ekFO2"><div class="impxz"><i class="arrow fa fa-play playbtn0"></i><img src="https://shorturl.at/ekFO2"></div><div class="zxnn"><span class="_zxn">Maan Meri Jaan</span><span class="_zxan">King</span><span class="_zxst">3:14</span></div></a></li>
     </ul> 
     </div>    
-      </div>
+  </div>
+  <div class="lyricss">
+    <div id="lyrics"></div>
+    </div>
       </div>
     </div>
     <div id="audio-container" class="player paused">
@@ -78,7 +81,7 @@
               <span class="duration">-:--</span>
             </div>
             <div align="center">
-              <button class=" button0 lyrics" name="lyrics" title="lyrics">
+              <button class=" button0 lyricsbtn">
                 <div class="arrow"><i class="fax fa fa-music"></i></div>
                   <div class="arrow"></div>
                 </button>
@@ -105,7 +108,7 @@
   </div>
   
   <div id="snackbar">Song downloaded. Please check your download folder.</div>
-  <div id="lyrics"></div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Read the song data from the cookie
@@ -154,7 +157,9 @@
                             lyricsDiv.innerHTML = parsedLyrics.map(lyric => {
                                 const timeInSeconds = timeToSeconds(lyric.time);
                                 const isBold = timeInSeconds <= currentTime && timeInSeconds + 3 > currentTime;
-                                return `<span class="${isBold ? 'bold' : ''}">${lyric.text}</span><br>`;
+                                const isPast = timeInSeconds < currentTime;
+                                const className = `${isBold ? 'boldz' : ''} ${isPast ? 'past-text' : ''}`;
+                                return `<span class="${className}">${lyric.text}</span><br>`;
                             }).join('');
                         }
                     });
@@ -179,19 +184,20 @@ function fetchLyrics(lyricsFile) {
                 return response.text();
             })
             .then(lyrics => {
-                // Parse the lyrics into an array of objects
-                const parsedLyrics = lyrics.split('\n').map(line => {
-                    const match = line.match(/^\[(\d+:\d+)\]\s*(.*)/);
-                    return match ? { time: match[1], text: match[2] } : null;
+              const parsedLyrics = lyrics.split('\n').map(line => {
+              const match = line.match(/^(\[([^\]]+)\])\s*(.*)/);
+              return match ? { time: match[2], text: match[3] } : null;
                 }).filter(Boolean);
 
                 return parsedLyrics;
             });
     }
 
-function timeToSeconds(time) {
-    const [minutes, seconds] = time.split(':').map(Number);
-    return minutes * 60 + seconds;
+    function timeToSeconds(time, offset = 0) {
+  const parts = time.split(':');
+  const minutes = parseInt(parts[0], 10);
+  const seconds = parseInt(parts[1], 10);
+  return minutes * 60 + seconds + offset;
 }
 
     function downloadFunction() {

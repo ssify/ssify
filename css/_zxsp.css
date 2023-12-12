@@ -104,6 +104,9 @@
   top: 5%;
 }
 
+.lyricsbtn.active {
+  color: rgb(102, 240, 48);
+}
 .shuffle.active,
 .repeat.active {
   color: rgb(136, 226, 101);
@@ -152,6 +155,48 @@
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
   }
 
+  .lyricss{
+    display: none;
+    position: absolute;
+    z-index: 900;
+    background: linear-gradient(45deg, red, blue);
+    width: 95%;
+    height: 85%;
+    top: 0;
+    font-size: x-large;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: justify;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  #lyrics{
+    height: 100%;
+    width: 60%;
+    margin: 10px auto;
+  }
+  
+  .past-text {
+    color: #fff;
+  }
+  .boldz{
+    font-size:25px;
+    background: linear-gradient(45deg, #0783f0, #73ff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .boldz::after{
+    content:"";
+    position:absolute;
+    right:-10px;
+    top:0;
+    width:10px;
+    height:100%;
+    transform:scaleX(.9);
+    background:#eaeaec;
+    opacity:.5;
+
+  }
   @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;}
     to {bottom: 30px; opacity: 1;}
