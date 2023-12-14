@@ -16,7 +16,7 @@ To use SSIFY, simply visit our website [insert-website-link-here](https://ssify.
 
 ## Support
 
-For any questions, issues, or feedback, please [create a new issue](https://github.com/your-ssify-repo/issues) on our GitHub repository. Our team is here to assist you and improve your SSIFY experience.
+For any questions, issues, or feedback, please [create a new issue](https://github.com/ssify/ssify/issues) on our GitHub repository. Our team is here to assist you and improve your SSIFY experience.
 
 ## License
 
